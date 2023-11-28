@@ -7,6 +7,9 @@ export const AddTaskReducer = (state = [], action) => {
   if (action.type === "addtask") {
     alltasks.push(action.info)
   }
+  if (action.type === 'deletetask') {
+    alltasks.splice(action.taskindex, 1)
+  }
   
   return alltasks;
 }
