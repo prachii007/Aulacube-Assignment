@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 export const AddTask = () => {
@@ -6,9 +7,22 @@ export const AddTask = () => {
   const [taskName, setTaskName] = useState('')
   const [taskDescription, setTaskDescription] = useState('')
   const [taskPriority, setTaskPriority] = useState('low')
+  
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const goToTaskList = () => {
     if (taskName !== "") {
+      const taskInfo = {
+        name: taskName,
+        description: taskDescription,
+        priority: taskPriority
+      }
+      const finalInfo = {
+        type: "addtask",
+        info: taskInfo
+      }
+      dispatch(finalInfo)
       navigate('/')
     }
   }
