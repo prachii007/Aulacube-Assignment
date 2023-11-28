@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<TaskList />} />
         <Route exact path='/addtask' element={<AddTask />} />
-        <Route exact path='/editask' element={<EditTask />} />
+        <Route exact path='/edittask' element={<EditTask />} />
       </Routes>
     </HashRouter>
   );
