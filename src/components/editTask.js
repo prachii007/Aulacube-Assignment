@@ -1,26 +1,46 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const EditTask = () => {
-  const [taskName, setTaskName] = useState('')
-  const [taskDescription, setTaskDescription] = useState('')
-  const [taskPriority, setTaskPriority] = useState('low')
+  const taskList = useSelector(state => state.AddTaskReducer)
+  const { id } = useParams()
+
+  const [taskName, setTaskName] = useState(taskList[id].name)
+  const [taskDescription, setTaskDescription] = useState(taskList[id].description)
+  const [taskPriority, setTaskPriority] = useState(taskList[id].priority)
+
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  
   const goToTaskList = () => {
     if (taskName !== "") {
+      const taskInfo = {
+        name: taskName,
+        description: taskDescription,
+        priority: taskPriority,
+      }
+      const finalinfo = {
+        type: "edittask",
+        info: taskInfo,
+        taskindex: id
+
+      }
+      dispatch(finalinfo)
       navigate('/')
     }
   }
+
   return (
     <div className='text-center mt-5'>
       <h1>Edit Task</h1>
       <div>
         <label for='task-name'>Task Name <span>*</span></label>
-        <input className='form-control' type='text' id='task-name' onChange={obj => setTaskName(obj.target.value)} />
+        <input className='form-control' type='text' id='task-name' onChange={obj => setTaskName(obj.target.value)} value={taskName} />
         <label for='task-description'>Task Description</label>
-        <textarea className='form-control' id='task-description' onChange={obj => setTaskDescription(obj.target.value)}></textarea>
+        <textarea className='form-control' id='task-description' onChange={obj => setTaskDescription(obj.target.value)} value={taskDescription}></textarea>
         <label for='task-priority'>Priority Level</label>
-        <select className='form-select' id='task-priority' onChange={obj => setTaskPriority(obj.target.value)} defaultValue='medium'>
+        <select className='form-select' id='task-priority' onChange={obj => setTaskPriority(obj.target.value)} value={taskPriority}>
           <option value='low' >Low</option>
           <option value='medium'>Medium</option>
           <option value='high'>High</option>

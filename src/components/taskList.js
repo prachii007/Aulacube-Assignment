@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom'
 
 export const TaskList = () => {
   const taskList = useSelector(state => state.AddTaskReducer)
-  console.log("taskList", taskList)
+  
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const goToAddTask = () => {
     navigate('/addtask')
   }
-  const goToEditTask = () => {
-    navigate('/edittask')
+  const goToEditTask = (index) => {
+    navigate(`/edittask/${index}`)
   }
 
   const deleteTask = (index) => {
