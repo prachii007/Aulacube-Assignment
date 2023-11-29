@@ -47,3 +47,13 @@
 .task-div textarea::placeholder {
   color: pink
 }
+
+.task-div .submit-button {
+  background: rgb(105, 7, 24);
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  color: white;
+  font-size: 16px;
+  font-style: italic;
+}
