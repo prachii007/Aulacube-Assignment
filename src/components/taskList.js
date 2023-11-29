@@ -7,12 +7,14 @@ export const TaskList = () => {
 
   const [taskList, setTasklist] = useState(savedDataFromLocalStorage || [])
   const [counter, SetCounter] = useState(0);
-  const [isChecked, setIsChecked] = useState(false)
 
   const navigate = useNavigate()
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked)
+  const handleCheckboxChange = (index) => {
+    const updatedTasks = [...taskList]
+    updatedTasks[index].isChecked = !updatedTasks[index].isChecked
+    localStorage.setItem('todos', JSON.stringify(updatedTasks));
+    setTasklist(updatedTasks);
   }
 
   const goToAddTask = () => {
@@ -33,21 +35,23 @@ export const TaskList = () => {
   return (
     <div className='text-center mt-5'>
       <h1>Task List</h1>
-      <button onClick={goToAddTask}>Add Task</button>
-      {
-        taskList.map((task, index) => {
-          return (
-            <div key={index}>
-              <input className='form-check-input' type='checkbox' checked={isChecked} onChange={handleCheckboxChange} />
-              <div style={{ textDecoration: isChecked ? 'line-through' : 'none' }}>{task.name}</div>
-              <div>{isChecked ? "Complete" : "Incomplete"}</div>
-              <div>{task.priority}</div>
-              <button onClick={deleteTask.bind(this, index)} disabled={isChecked}>Delete</button>
-              <button onClick={goToEditTask.bind(this, index)} disabled={isChecked}>Edit</button>
-            </div>
-          )
-        })
-      }
+      <button onClick={goToAddTask} className='my-5'>Add Task</button>
+      <div className='border border-info'>
+        {
+          taskList.map((task, index) => {
+            return (
+              <div key={index}>
+                <input className='form-check-input' type='checkbox' checked={task.isChecked || false} onChange={()=>handleCheckboxChange(index)} />
+                <div style={{ textDecoration: task.isChecked ? 'line-through' : 'none' }}>{task.name}</div>
+                <div>{task.isChecked ? "Complete" : "Incomplete"}</div>
+                <div>{task.priority}</div>
+                <button onClick={deleteTask.bind(this, index)} disabled={task.isChecked}>Delete</button>
+                <button onClick={goToEditTask.bind(this, index)} disabled={task.isChecked}>Edit</button>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
   )
 }
