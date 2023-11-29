@@ -43,7 +43,7 @@ export const AddTask = () => {
             <option value='High'>High</option>
           </select>
         </div>
-        <button onClick={goToTaskList}> Submit</button>
+        <button onClick={goToTaskList} className='btn btn-primary'> Submit</button>
       </div>
     </div>
   )

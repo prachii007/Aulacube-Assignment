@@ -40,5 +40,10 @@
 .task-div label {
   font-size: 24px;
   text-align: left;
-  /* border: 1px solid green; */
+  color: rgb(105, 7, 24)
+    /* border: 1px solid green; */
+}
+
+.task-div textarea::placeholder {
+  color: pink
 }
