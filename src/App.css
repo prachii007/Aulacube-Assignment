@@ -3,7 +3,7 @@
 }
 
 .task-div {
-  border: 5px solid black;
+  /* border: 5px solid black; */
   width: 70%;
   margin: auto;
 }
@@ -35,4 +35,10 @@
 
 .action-btn {
   background-color: #ffb703;
+}
+
+.task-div label {
+  font-size: 24px;
+  text-align: left;
+  /* border: 1px solid green; */
 }

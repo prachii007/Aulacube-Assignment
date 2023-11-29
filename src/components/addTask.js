@@ -25,18 +25,24 @@ export const AddTask = () => {
 
   return (
     <div className='text-center mt-5'>
-      <h1>Add Task</h1>
-      <div>
-        <label for='task-name'>Task Name <span className='text-danger fw-bold'>*</span></label>
-        <input className='form-control' type='text' id='task-name' onChange={obj => setTaskName(obj.target.value)} />
-        <label for='task-description'>Task Description</label>
-        <textarea className='form-control' id='task-description' onChange={obj => setTaskDescription(obj.target.value)}></textarea>
-        <label for='task-priority'>Priority Level</label>
-        <select className='form-select' id='task-priority' onChange={obj => setTaskPriority(obj.target.value)}>
-          <option value='Low'>Low</option>
-          <option value='Medium' selected>Medium</option>
-          <option value='High'>High</option>
-        </select>
+      <h1 className='my-5'>Add Task</h1>
+      <div className='task-div'>
+        <div className='mb-5 row'>
+          <label for='task-name' className='mb-2'>Task Name <span className='text-danger fw-bold'>*</span></label>
+          <input className='form-control' type='text' id='task-name' onChange={obj => setTaskName(obj.target.value)} />
+        </div>
+        <div className='mb-5 row'>
+          <label for='task-description' className='mb-2'>Task Description</label>
+          <textarea className='form-control' id='task-description' onChange={obj => setTaskDescription(obj.target.value)} rows={5} placeholder='Write description of your task in detail here..'></textarea>
+        </div>
+        <div className='mb-5 row'>
+          <label for='task-priority' className='mb-2'>Priority Level</label>
+          <select className='form-select' id='task-priority' onChange={obj => setTaskPriority(obj.target.value)}>
+            <option value='Low'>Low</option>
+            <option value='Medium' selected>Medium</option>
+            <option value='High'>High</option>
+          </select>
+        </div>
         <button onClick={goToTaskList}> Submit</button>
       </div>
     </div>
