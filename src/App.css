@@ -2,4 +2,37 @@
   text-align: center;
 }
 
+.task-div {
+  border: 5px solid black;
+  width: 70%;
+  margin: auto;
+}
 
+.add-task-btn {
+  width: 50%;
+  background-color: #a2d2ff;
+  font-weight: bold;
+  padding: 20px;
+  font-size: 20px;
+  /* transition: all 1s ease-in; */
+}
+
+.add-task-btn:hover {
+  background-color: #198bf5;
+}
+
+.task-div thead {
+  color: #fb8500;
+  color: #198bf5;
+  font-size: 24px;
+  /* font-weight: bold; */
+}
+
+/* .task-div tbody td {
+  color: #ffafcc;
+ font-weight: bold;
+} */
+
+.action-btn {
+  background-color: #ffb703;
+}
