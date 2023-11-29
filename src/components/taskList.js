@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 export const TaskList = () => {
-  const taskList = useSelector(state => state.AddTaskReducer)
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const savedDataFromLocalStorage = JSON.parse(localStorage.getItem('todos')) || []
 
+  const [taskList, setTasklist] = useState(savedDataFromLocalStorage || [])
+  const [counter, SetCounter] = useState(0);
   const [isChecked, setIsChecked] = useState(false)
+
+  const navigate = useNavigate()
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked)
@@ -17,16 +18,16 @@ export const TaskList = () => {
   const goToAddTask = () => {
     navigate('/addtask')
   }
+
   const goToEditTask = (index) => {
     navigate(`/edittask/${index}`)
   }
 
   const deleteTask = (index) => {
-    const taskInfo = {
-      type: "deletetask",
-      taskindex: index
-    }
-    dispatch(taskInfo)
+    taskList.splice(index, 1);
+    SetCounter((counter) => counter + 1)
+    localStorage.setItem('todos', JSON.stringify(taskList));
+    setTasklist(taskList)
   }
 
   return (

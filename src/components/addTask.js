@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const AddTask = () => {
 
+  const taskList = JSON.parse(localStorage.getItem('todos')) || [];
   const [taskName, setTaskName] = useState('')
   const [taskDescription, setTaskDescription] = useState('')
   const [taskPriority, setTaskPriority] = useState('low')
-  
+
   const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   const goToTaskList = () => {
     if (taskName !== "") {
@@ -18,11 +17,8 @@ export const AddTask = () => {
         description: taskDescription,
         priority: taskPriority
       }
-      const finalInfo = {
-        type: "addtask",
-        info: taskInfo
-      }
-      dispatch(finalInfo)
+      taskList.push(taskInfo);
+      localStorage.setItem('todos', JSON.stringify(taskList));
       navigate('/')
     }
   }
