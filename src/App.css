@@ -2,23 +2,48 @@
   text-align: center;
 }
 
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .task-div {
-  /* border: 5px solid black; */
   width: 70%;
   margin: auto;
+}
+
+.task-div thead tr td {
+  /* border: 5px solid green; */
+  margin: 25px;
+  padding: 10px;
+}
+
+.task-div tbody tr {
+  /* border: 5px solid slateblue; */
+  /* margin-bottom: 100px; */
+  row-gap: 20px;
+  box-sizing: border-box;
+  margin: 20px;
+}
+
+.task-div tbody tr td {
+  padding: 25px;
 }
 
 .add-task-btn {
   width: 50%;
   background-color: #a2d2ff;
-  font-weight: bold;
+  background-color: rgb(105, 7, 24);
+  color: white;
+  font-style: italic;
+  /* font-weight: bold; */
   padding: 20px;
   font-size: 20px;
+  border-radius: 10px;
   /* transition: all 1s ease-in; */
 }
 
 .add-task-btn:hover {
-  background-color: #198bf5;
+  background-color: rgb(193, 13, 43);
 }
 
 .task-div thead {
@@ -33,8 +58,47 @@
  font-weight: bold;
 } */
 
+.card>.card-header {
+  color: rgb(105, 7, 24);
+  font-style: italic;
+  background-color: rgb(244, 118, 139); 
+  color: white;
+}
+
 .action-btn {
   background-color: #ffb703;
+  border-radius: 20px;
+}
+
+.edit {
+  background-color: green;
+}
+
+.edit:hover {
+  background-color: rgb(2, 184, 2);
+}
+
+.edit:disabled:hover {
+  background-color: green;
+}
+
+.delete {
+  background-color: rgb(154, 2, 2);
+}
+
+.delete:hover {
+  background-color: red;
+}
+
+.delete:disabled:hover {
+  background-color: rgb(154, 2, 2);
+}
+
+.priority {
+  color: black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 80%;
 }
 
 .task-div label {
@@ -56,4 +120,32 @@
   color: white;
   font-size: 16px;
   font-style: italic;
+}
+
+.singleRow {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80vw;
+  border: 2px solid purple;
+  margin: 20px;
+  padding: 20px;
+}
+
+.singleRow div {
+  flex: 1;
+}
+
+.outer-box {
+
+  width: 80%;
+  margin: auto;
+}
+
+.task-headers {
+  font-size: 24px;
+  font-style: italic;
+  margin: 20px;
+  padding: 20px 0;
+  color: rgb(105, 7, 24)
 }
