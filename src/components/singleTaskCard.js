@@ -52,14 +52,14 @@ const SingleTaskCard = ({ handleCheckboxChange, goToEditTask, deleteTask, task, 
                 <button
                     onClick={goToEditTask.bind(this, index)}
                     disabled={task.isChecked}
-                    className='edit action-btn mx-2  col-sm-2 col-8'
+                    className='edit action-btn mx-2 mb-2 col-sm-2 col-8'
                 >
                     Edit
                 </button>
                 <button
                     onClick={deleteTask.bind(this, index)}
                     disabled={task.isChecked}
-                    className='delete action-btn mx-2  col-sm-2 col-8'
+                    className='delete action-btn mx-2 mb-2 col-sm-2 col-8'
                 >
                     Delete
                 </button>

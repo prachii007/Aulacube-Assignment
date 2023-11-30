@@ -30,15 +30,15 @@ export const EditTask = () => {
       <h1 className='my-5'>Edit Task</h1>
       <div className='task-div'>
         <div className='mb-5 row'>
-          <label for='task-name' className='mb-2'>Task Name <span className='text-danger'>*</span></label>
+          <label htmlFor='task-name' className='mb-2'>Task Name <span className='text-danger'>*</span></label>
           <input className='form-control' type='text' id='task-name' onChange={obj => setTaskName(obj.target.value)} value={taskName} />
         </div>
         <div className='mb-5 row'>
-          <label for='task-description' className='mb-2'>Task Description</label>
+          <label htmlFor='task-description' className='mb-2'>Task Description</label>
           <textarea className='form-control' id='task-description' onChange={obj => setTaskDescription(obj.target.value)} value={taskDescription} rows={5} placeholder='Write description of your task in detail here..'></textarea>
         </div>
         <div className='mb-5 row'>
-          <label for='task-priority' className='mb-2'>Priority Level</label>
+          <label htmlFor='task-priority' className='mb-2'>Priority Level</label>
           <select className='form-select' id='task-priority' onChange={obj => setTaskPriority(obj.target.value)} value={taskPriority}>
             <option value='Low'>Low</option>
             <option value='Medium'>Medium</option>
