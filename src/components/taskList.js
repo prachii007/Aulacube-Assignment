@@ -38,12 +38,10 @@ export const TaskList = () => {
       <h1>Task List</h1>
       <button onClick={goToAddTask} className='my-5 add-task-btn'>Add Task</button>
       <div className='outer-box'>
-        <div className=''>
           {
             taskList.map((task, index) => {
               return (
                 <SingleTaskCard
-                  // className='single-row'
                   key={index}
                   index={index}
                   handleCheckboxChange={handleCheckboxChange}
@@ -53,7 +51,6 @@ export const TaskList = () => {
               )
             })
           }
-        </div>
       </div>
     </div>
   )
