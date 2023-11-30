@@ -40,9 +40,9 @@ export const EditTask = () => {
         <div className='mb-5 row'>
           <label for='task-priority' className='mb-2'>Priority Level</label>
           <select className='form-select' id='task-priority' onChange={obj => setTaskPriority(obj.target.value)} value={taskPriority}>
-            <option value='low' >Low</option>
-            <option value='medium'>Medium</option>
-            <option value='high'>High</option>
+            <option value='Low'>Low</option>
+            <option value='Medium'>Medium</option>
+            <option value='High'>High</option>
           </select>
         </div>
         <button onClick={goToTaskList} className='submit-button'> Submit</button>
