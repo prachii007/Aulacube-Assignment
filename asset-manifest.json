@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Aulacube-Assignment/static/css/main.5404297f.css",
+    "main.js": "/Aulacube-Assignment/static/js/main.4b67a121.js",
+    "static/js/787.fbfa288c.chunk.js": "/Aulacube-Assignment/static/js/787.fbfa288c.chunk.js",
+    "index.html": "/Aulacube-Assignment/index.html",
+    "main.5404297f.css.map": "/Aulacube-Assignment/static/css/main.5404297f.css.map",
+    "main.4b67a121.js.map": "/Aulacube-Assignment/static/js/main.4b67a121.js.map",
+    "787.fbfa288c.chunk.js.map": "/Aulacube-Assignment/static/js/787.fbfa288c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5404297f.css",
+    "static/js/main.4b67a121.js"
+  ]
+}
