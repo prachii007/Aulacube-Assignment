@@ -1,23 +1,35 @@
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import TaskForm from './TaskForm'
 
 export const EditTask = () => {
 
   const taskList = JSON.parse(localStorage.getItem('todos')) || []
   const { id } = useParams()
-
-  const [taskName, setTaskName] = useState(taskList[id].name)
-  const [taskDescription, setTaskDescription] = useState(taskList[id].description)
-  const [taskPriority, setTaskPriority] = useState(taskList[id].priority)
-
+  const [state, setState] = useState({
+    taskName: taskList[id].name,
+    taskDescription: taskList[id].description,
+    taskPriority: taskList[id].priority,
+    taskId: taskList[id].id
+  })
   const navigate = useNavigate()
 
-  const goToTaskList = () => {
-    if (taskName !== "") {
+  const handleState = (e) => {
+    const { name, value } = e.target
+    setState((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleEdit = () => {
+    if (state.taskName !== "") {
       const taskInfo = {
-        name: taskName,
-        description: taskDescription,
-        priority: taskPriority,
+        name: state.taskName,
+        description: state.taskDescription,
+        priority: state.taskPriority,
+        isChecked: false,
+        id: state.taskId
       }
       taskList.splice(id, 1, taskInfo)
       localStorage.setItem('todos', JSON.stringify(taskList))
@@ -26,26 +38,6 @@ export const EditTask = () => {
   }
 
   return (
-    <div className='text-center mt-5'>
-      <h1 className='my-5'>Edit Task</h1>
-      <div className='task-div'>
-        <div className='mb-5 row'>
-          <label htmlFor='task-name' className='mb-2'>Task Name <span className='text-danger'>*</span></label>
-          <input className='form-control' type='text' id='task-name' onChange={obj => setTaskName(obj.target.value)} value={taskName} />
-        </div>
-        <div className='mb-5 row'>
-          <label htmlFor='task-description' className='mb-2'>Task Description</label>
-          <textarea className='form-control' id='task-description' onChange={obj => setTaskDescription(obj.target.value)} value={taskDescription} rows={5} placeholder='Write description of your task in detail here..'></textarea>
-        </div>
-        <div className='mb-5 row'>
-          <label htmlFor='task-priority' className='mb-2'>Priority Level</label>
-          <select className='form-select' id='task-priority' onChange={obj => setTaskPriority(obj.target.value)} value={taskPriority}>
-            <option value='Low'>Low</option>
-            <option value='Medium'>Medium</option>
-            <option value='High'>High</option>
-          </select>
-        </div>
-        <button onClick={goToTaskList} className='submit-button'> Submit</button>
-      </div>
-    </div>)
+    <TaskForm state={state} handleState={handleState} onClick={handleEdit} feature={"Edit"} />
+  )
 }

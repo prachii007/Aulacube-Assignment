@@ -1,7 +1,7 @@
 import './App.css';
-import { TaskList } from './components/taskList';
-import { AddTask } from './components/addTask';
-import { EditTask } from './components/editTask';
+import { TaskList } from './components/Home';
+import { AddTask } from './components/AddTask';
+import { EditTask } from './components/EditTask';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
