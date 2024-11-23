@@ -12,7 +12,9 @@ h1 {
 }
 
 .add-task-btn {
-  width: 50%;
+  /* width: 50%; */
+  /* width: 350px; */
+  width: 100%;
   background-color: #a2d2ff;
   background-color: rgb(105, 7, 24);
   color: white;

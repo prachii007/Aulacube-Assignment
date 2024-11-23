@@ -28,7 +28,8 @@ export const AddTask = () => {
         description: state.taskDescription,
         priority: state.taskPriority,
         isChecked: false,
-        id: new Date().toLocaleTimeString()
+        id: new Date().toLocaleTimeString(),
+        date: new Date()
       }
       taskList.push(taskInfo)
       localStorage.setItem('todos', JSON.stringify(taskList))
