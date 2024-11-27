@@ -19,7 +19,7 @@ export const TaskList = () => {
     unCheckedTasks: tasksFromLS.filter(x => !x.isChecked),
     checkedTasks: tasksFromLS.filter(x => x.isChecked),
     order: "desc",
-    priority: "High"
+    priority: "All"
   })
 
   const navigate = useNavigate()
@@ -94,7 +94,8 @@ export const TaskList = () => {
     }))
   }, [tasksFromLS])
 
-  console.log('stte', state)
+
+  // console.log('stte', state)
 
   return (
     <>
@@ -119,6 +120,7 @@ export const TaskList = () => {
           <div className='mb-2 d-flex col-12'>
             <div>Priority Order :</div>
             <select className='form-select' value={state.priority} onChange={(e) => setState((prev) => ({ ...prev, priority: e.target.value }))} >
+              <option value="All">All</option>
               <option value="High">High</option>
               <option value="Medium">Medium</option>
               <option value="Low">Low</option>
@@ -131,7 +133,7 @@ export const TaskList = () => {
             {
               (state.showAll ? state.taskList : state.showChecked ? state.checkedTasks : state.unCheckedTasks)
                 .sort((a, b) => state.order === "asc" ? a.date - b.date : b.date - a.date) // Dynamic sorting based on order
-                .filter((a) => a.priority === state.priority)
+                .filter((a) => state.priority === "All" || a.priority === state.priority)
                 .map((task, index) => (
                   <SingleTaskCard
                     key={index}
